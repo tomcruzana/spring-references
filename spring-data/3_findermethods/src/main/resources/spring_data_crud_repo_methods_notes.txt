@@ -1,0 +1,62 @@
+#CrudRepository Methods
+
+public Iterable findAll()
+
+public Boolean existById(id)
+
+public Optional<Entity> findById(id)
+
+public T save(T entity)
+
+public void deleteById(id)
+
+public void delete(T entity)
+
+public Iterable saveAll(Iterable entities)
+
+public void deleteAll()
+
+
+#Query Methods Rules
+#Rules for method naming:
+findBy, getBy, readBy, countBy, queryBy
+ex: findByAttributeName
+
+
+#Common keywords sample
+Between
+LessThan, GreaterThan
+Before, After
+Null, NotNull, Like
+OrderBy
+
+ex: findByAttributeLessThen(xxx)
+
+#Pagination and Sorting
+#PagingAndSortingRepository interface important methods:
+public static Sort(String... properties)
+public Sort descending()
+public Sort ascending()
+
+#Page
+Page<T> findAll(Pageable pageable)
+#Page important methods
+List<T> getContent()
+Boolean hasContent()
+
+#Sorting
+findAll(Sort.by(Sort.Direction.DESC, "attributeName"));
+
+PageRequest.of(page, size)
+PageRequest.of(page, size, sort)
+
+ex:
+Pageable pageableRecords = PageRequest.of(0, 5);
+
+Page<Customer> cx = CustomerRepository.findAll(pageableRecords);
+
+List<Customer> cxList = cx.getContent();
+
+ex custom method in repo:
+// a pageable configuration info must be added in the parameter
+public List<Customer> findByScoreBetween(min, max, pageable) 

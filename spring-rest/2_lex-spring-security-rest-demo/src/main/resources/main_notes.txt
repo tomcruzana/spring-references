@@ -1,0 +1,16 @@
+#spring security basics
+#part 1 : default spring security
+
+1. add spring-boot-starter-security
+
+2. make a get request http://localhost:8765/infybank/customers/1 and expect an unauthorized response
+
+3. in postman or browser, send the request with credentials for authentication. in postman, click on authorization tab and select Type as Basic Auth. 
+Enter username as user and password as printed in Eclipse console and send GET request to URL http://localhost:8765/infybank/customers/1 as shown below:
+
+4. check passed results
+
+
+#part 2 : modified spring security
+-checkout the com.infy.security package
+-doc: https://bit.ly/3gJKyFy

@@ -1,0 +1,25 @@
+EXCEPTION HANDLING
+
+1. Create the following ErrorInfo class in com.infy.utility package
+2. Create the following ExceptionControllerAdvice class in com.infy.utility package
+3. annotate the ExceptionControllerAdvice with @RestControllerAdvice at class level
+4. annotate with @ExceptionHandler(exceptionClassHere.class) at method level
+5. configure log4j.properties
+
+
+NEW SPRING 5 APPROACH
+1. use the ResponseStatusException
+2. surround rest controller methods with try catch and handle them accordingly
+ex:
+try 
+{
+	// from the url mapping we grab the data and pass it to the service class so it
+	// can be processed
+	CustomerDTO customer = customerService.getCustomer(customerId);
+
+	// once done, we return a response entity object with the requested info
+	return new ResponseEntity<>(customer, HttpStatus.OK);
+} catch (Exception exception) {
+	throw new ResponseStatusException(HttpStatus.NOT_FOUND, environment.getProperty(exception.getMessage()),
+					exception);
+}

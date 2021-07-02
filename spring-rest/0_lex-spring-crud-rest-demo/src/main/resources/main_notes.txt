@@ -1,0 +1,27 @@
+SPRING REST API
+1. import required dependencies:
+-spring-boot-starter-web
+-spring-boot-starter-data-jpa
+-mysql-connector-java
+-(optional) spring-boot-devtools : auto-refreshes the server
+
+2. create the persistence, service & rest controller layers
+-(optional layers) advise/utility & exception
+
+3. in rest controller, make sure to:
+annotate with @CrossOrigin to enable API clients to request resources
+annotate with @RestController, @RequestMapping(value = "/xxx") at the class level
+and @xxxMapping at method levels
+-xxx = get, post, put, patch, delete
+
+4. for rest layer methods return a ResponseEntity<>(x1,x2) which x1 will handle the data response obj, and x2 http status codes
+
+5. the rest controller api layer must communicate with the service layer
+
+6. the service layer must communicate with the persistence layer. 
+annotate it with @Transactional
+
+6. (optional) in the main application class, you'll see a demo on how to consume rest apis using rest template (which is an almost deprecated approach)
+
+note: 
+com.thomas.springdatarest.api is the controller layer package of this project
